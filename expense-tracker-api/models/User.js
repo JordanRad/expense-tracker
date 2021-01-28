@@ -8,6 +8,9 @@ module.exports = (sequelize, type) => {
         email:{ type:type.STRING,
             unique:true
         },
-        password: type.STRING
+        firstName:type.STRING,
+        lastName:type.STRING,
+        password: type.STRING,
+        status:type.STRING
     })
 }

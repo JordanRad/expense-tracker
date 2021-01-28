@@ -8,6 +8,10 @@ module.exports = (sequelize, type) => {
         name:{ type:type.STRING
         },
         price:{type:type.DECIMAL(10,2)},
+        creationDay:{
+            type:type.STRING,
+            defaultValue: new Date().toLocaleDateString("en-US")
+        },
         category:{
             type:type.STRING
         }

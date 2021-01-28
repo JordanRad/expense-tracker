@@ -1,0 +1,300 @@
+swagger: "2.0"
+info:
+  # description: "For this example you can use:"
+  description: |
+    # Jordan Radushev - Expense tracker API Routes
+
+    ### For the following example you can use this as an authentication token:
+    **copy the entire token*
+      * *Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QifQ.i5ZyXxFcdZllQoK-FWrf6eDACWO7doUqTOrw7Qd454I* 
+    
+  version: "1.0.0"
+  title: "Expense tracker API"
+servers:
+  - url: http://localhost:8000/
+    description: Development server
+  # - url: http://staging-api.example.com
+  #   description: Optional server description, e.g. Internal staging server for testing
+ 
+paths:
+  /users/{id}:
+    get:
+      tags: 
+      - "user"
+      security:
+        - Bearer: []
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the user to get
+        # - in: header
+        #   name: "Authorization"
+        #   schema:
+        #     type: string
+        #   required: true
+        #   description: type Bearer valid jwt
+      responses:
+        '200':    
+          description: A JSON object of user 
+        '404':    
+          description: User not found 
+        '403':    
+          description: Forbidden route
+    put:
+      tags: 
+      - "user"
+      security:
+        - Bearer: []
+      parameters:
+        - in: patrh
+          name: id
+          schema:
+            $ref: "#/definitions/User"
+          required: true
+          description: User id
+        - in: body
+          name: User details to update
+          schema:
+            $ref: "#/definitions/User"
+          required: true
+          description: Update user's details
+      responses:
+        '200':    
+          description: "Successfully deactivated account."
+    delete:
+      tags: 
+      - "user"
+      security:
+        - Bearer: []
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: User id to deactivate this account.
+      responses:
+        '200':    
+          description: "Successfully deactivated account."
+        '403':    
+          description: "Forbidden route"
+  /users/login:
+    post:
+      tags: 
+      - "user"
+      parameters:
+        - in: body
+          name: Credentials
+          schema:
+            $ref: "#/definitions/Credentials"
+          required: true
+          description: Email and password to login
+      responses:
+        '200':    
+          description: A JSON object of user with JWT attached to it 
+        '404':    
+          description: Wrong credentials 
+        '403':    
+          description: Forbidden route
+  /users/register:
+    post:
+      tags: 
+      - "user"
+      parameters:
+        - in: body
+          name: User details
+          schema:
+            $ref: "#/definitions/User"
+          required: true
+          description: Register a user
+      responses:
+        '200':    
+          description: "User has been registered to the database"
+        '409':    
+          description: "Such email exists"
+  /users/activate/{id}:
+    patch:
+      tags: 
+      - "user"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Activate account
+      responses:
+        '200':    
+          description: "User has just been activated." 
+  /expense/:
+    post:
+      tags: 
+      - "expense"
+      security:
+        - Bearer: []
+      parameters:
+        - in: body
+          name: expense
+          schema:
+            $ref: '#/definitions/Expense'
+          required: true
+          description: Expense
+      responses:
+        '200':    
+          description: "Expense JSON Object"
+        '404':    
+          description: "Not found"  
+  /expenses/{id}:
+    get:
+      tags: 
+      - "expense"
+      security:
+        - Bearer: []
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Expense id
+      responses:
+        '200':    
+          description: "Expense JSON Object"
+        '404':    
+          description: "Not found" 
+        '403':    
+          description: Forbidden route  
+    patch:
+      tags: 
+      - "expense"
+      security:
+        - Bearer: []
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: 'integer'
+          required: true
+          description: Expense id
+        - in: body
+          name: expense
+          schema:
+            $ref: '#/definitions/Expense'
+          required: true
+          description: Update expense
+      responses:
+        '200':    
+          description: "Expense JSON Object"
+        '404':    
+          description: "Not found"  
+    delete:
+      tags: 
+      - "expense"
+      security:
+        - Bearer: []
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: 'integer'
+          required: true
+          description: Expense id
+      responses:
+        '200':    
+          description: "Expense JSON Object"
+        '404':    
+          description: "Not found"   
+        '403':    
+          description: Forbidden route
+  /expense/getByDay:
+    get:
+      tags: 
+      - "expense"
+      security:
+        - Bearer: []
+      parameters:
+        - in: query
+          name: userId
+          schema:
+            type: integer
+          required: true
+          description: user id
+        - in: query
+          name: day
+          schema:
+            type: string
+          required: true
+          description: choose a day
+      responses:
+        '200':    
+          description: "Expense JSON Object"
+        '404':    
+          description: "Not found"  
+        '403':    
+          description: Forbidden route
+  /expense/getByMonth:
+    get:
+      tags: 
+      - "expense"
+      security:
+        - Bearer: []
+      parameters:
+        - in: query
+          name: userId
+          schema:
+            type: integer
+          required: true
+          description: user id
+        - in: query
+          name: month
+          schema:
+            type: string
+          required: true
+          description: choose a month
+      responses:
+        '200':    
+          description: "Expense JSON Object"
+        '404':    
+          description: "Not found"
+        '403':    
+          description: Forbidden route  
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  Credentials:
+    type: "object"
+    properties:
+      email:
+        type: "string"
+      password:
+        type: "string"
+  User:
+    type: "object"
+    properties:
+      email:
+        type: "string"
+      password:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+  Expense:
+    type: "object"
+    properties:
+      userId:
+        type: "integer"
+      name:
+        type: "string"
+      category:
+        type: "string"
+      creationDay:
+        type: "string"
+      price:
+        type: "number"
