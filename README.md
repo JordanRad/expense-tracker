@@ -1,7 +1,7 @@
-# Expense Tracker Full-Stack
-## *by Jordan*
+# Expense Tracker Full-Stack Web Application
+## *by Jordan Radushev*
 
-#### How to set up the project globally
+#### How to set up the project globally:
 
 1. Open the folder with the project with both front-end and api folders:
 ```
