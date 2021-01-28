@@ -32,4 +32,15 @@ npm start
 
 #### After succesffully running the API
 check the API endpoints with examples by Swagger-UI on *localhost:8000/api-docs*
-   
+
+#### About the stack:
+As a full-stack app, my expense-tracker needs front-end and back-end part. I use the following technologies:
+* Front-end application:
+   * React JS
+   * Materlial UI
+* Back-end server part:
+   * Node JS
+   * Express JS
+   * Swagger API Documentation UI
+* Database:
+   * SQLite3 file database
