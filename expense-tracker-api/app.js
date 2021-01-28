@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 //Swager constants for SWAGGER UI
-const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUI = require('swagger-ui-express');
 const swaggerOptions = {
     swaggerDefinition: {
@@ -38,3 +37,5 @@ app.use('/users',userController);
 app.use('/expenses',expenseController);
 
 app.listen(8000);
+
+module.exports = app;

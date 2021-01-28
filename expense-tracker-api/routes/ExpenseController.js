@@ -1,22 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const {
-    Expense
-} = require('../sequelize');
-
+const {Expense} = require('../sequelize'); 
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 const dotenv = require("dotenv")
 dotenv.config()
 const jwt = require("jsonwebtoken");
+const user = require('../models/user');
 
 router.get('/getByDay', async (req, res) => {
     try {
         let expenses = await Expense.findAll({
             where: 
                 Sequelize.and({
-                    userId: req.query.userId,
+                    UserId: req.query.userId,
                     creationDay:{
                         [Op.like]:`%${req.query.day}%`
                     }
@@ -35,7 +33,7 @@ router.get('/getByMonth', async (req, res) => {
         let expenses = await Expense.findAll({
             where: 
                 Sequelize.and({
-                    userId: req.query.userId,
+                    UserId: req.query.userId,
                     creationDay:{
                         [Op.like]:`%${req.query.month}%`
                     }
@@ -52,15 +50,15 @@ router.get("/getByUserId/:userId", async (req, res) => {
     try {
         let expenses = await Expense.findAll({
             where: {
-                userId: req.params.userId
+                UserId: req.params.userId
             },
             attributes: {
-                exclude: ["userId"]
+                exclude: ["UserId"]
             }
         })
 
         expenses.length !== 0 ? res.json(expenses) : res.sendStatus(404)
-
+    
     } catch (err) {
         res.json(err);
     }

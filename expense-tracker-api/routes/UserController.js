@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {
     User
-} = require('../sequelize');
+} = require('../sequelize'); 
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -14,7 +14,7 @@ const jwt = require("jsonwebtoken");
 const Sequelize = require('sequelize');
 
 
-
+  
 const generateToken = (email) => {
     return jwt.sign({
         email: email
@@ -79,7 +79,6 @@ router.post("/login", async (req, res) => {
     }
 })       
 router.put("/:id", async (req, res) => {
-    console.log("update")
     try {
         await bcrypt.hash(req.body.password, saltRounds, async (err, hash) => {
                 if (!err) {
@@ -115,7 +114,6 @@ router.put("/:id", async (req, res) => {
 })
    
 router.delete("/:id", async (req, res) => {
-    console.log("soft deleting...")
     try {
         user = await User.update({
             status: "DEACTIVATED"
@@ -134,7 +132,6 @@ router.delete("/:id", async (req, res) => {
     }
 })
 router.patch("/activate/:id", async (req, res) => {
-    console.log("activate account...")
     try {
         user = await User.update({
             status: "ACTIVE"
@@ -152,4 +149,5 @@ router.patch("/activate/:id", async (req, res) => {
         })
     }
 })
+
 module.exports = router;

@@ -49,10 +49,10 @@ paths:
       security:
         - Bearer: []
       parameters:
-        - in: patrh
+        - in: path
           name: id
           schema:
-            $ref: "#/definitions/User"
+            type: "integer"
           required: true
           description: User id
         - in: body
@@ -129,7 +129,7 @@ paths:
       responses:
         '200':    
           description: "User has just been activated." 
-  /expense/:
+  /expenses/:
     post:
       tags: 
       - "expense"
@@ -209,7 +209,7 @@ paths:
           description: "Not found"   
         '403':    
           description: Forbidden route
-  /expense/getByDay:
+  /expenses/getByDay:
     get:
       tags: 
       - "expense"
@@ -235,7 +235,7 @@ paths:
           description: "Not found"  
         '403':    
           description: Forbidden route
-  /expense/getByMonth:
+  /expenses/getByMonth:
     get:
       tags: 
       - "expense"
