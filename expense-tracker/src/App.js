@@ -9,23 +9,24 @@ import HomePage from './Pages/HomePage';
 import LandingPage from './Pages/LandingPage';
 import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
+import './index.css';
 import { responsiveFontSizes } from '@material-ui/core/styles';
 import {
   createMuiTheme,
   ThemeProvider,
-  CssBaseline
+  CssBaseline,
 } from "@material-ui/core";
-let theme = createMuiTheme({
 
+let theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#7293a6',//"#7293a6",
-      dark: "#232f34",
-      light: "#D5e1e8",
+      main: '#CECECE',//"#7293a6",
+      dark: "#A6A6A8",
+      light: "#E8E9F3",
     },
     secondary: {
-      main: "#EBDE97",
-      dark: "#a29138"
+      main: "#B1E5F2",
+      dark: "#272635"
     },
   },
   typography: {
@@ -38,7 +39,9 @@ let theme = createMuiTheme({
 
 });
 theme = responsiveFontSizes(theme);
+
 function App() {
+ 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
