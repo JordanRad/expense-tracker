@@ -7,7 +7,6 @@ import PieChartIcon from '@material-ui/icons/PieChart';
 import { Link } from 'react-router-dom';
 import Partciles from 'react-particles-js';
 import particlesOptions from '../Components/particlesOptions';
-import zIndex from '@material-ui/core/styles/zIndex';
 const useStyles = makeStyles(theme => ({
     root: {
         backgroundColor: theme.palette.secondary.dark,
@@ -26,9 +25,9 @@ const useStyles = makeStyles(theme => ({
             overflowY: 'scroll',
         },
         position: "absolute",
-        top:0,
-        left:0,
-        zIndex:1
+        top: 0,
+        left: 0,
+        zIndex: 1
 
     },
     animation: {
@@ -68,7 +67,7 @@ const useStyles = makeStyles(theme => ({
             width: "400px",
             height: "80px"
         },
-        marginBottom: "16px",
+        marginBottom: "1px",
         marginTop: "26px"
     },
     icon: {
@@ -83,7 +82,7 @@ const useStyles = makeStyles(theme => ({
         },
         fontSize: '20px',
         color: theme.palette.primary.light,
-        marginTop: "20px",
+        marginTop: "1px",
         marginBottom: "100px"
     }
 }));
@@ -109,16 +108,13 @@ const LandingPage = (props) => {
             View graphical representations of your expenses.
         </div>
     </Grid>]
-    //Add particles js
     return (
         <>
-
             <Grid container className={classes.root} >
-
-            <Partciles
-            className="particles"
-            params={particlesOptions}
-          />
+                <Partciles
+                    className="particles"
+                    params={particlesOptions}
+                />
                 <Grid item className={classes.heading} xs={12}>
                     <Typography variant="h2">My Expense</Typography>
                     <br />
@@ -133,9 +129,7 @@ const LandingPage = (props) => {
                     <Link className={classes.loginLink} to={'./login'}>I have an account already</Link>
                 </Grid>
             </Grid>
-
         </>
     );
 }
-
 export default LandingPage;

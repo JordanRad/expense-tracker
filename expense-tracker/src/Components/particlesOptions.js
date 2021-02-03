@@ -1,5 +1,4 @@
 const particlesOptions = {
-
     particles: {
         number: {
             value: 15,
@@ -8,7 +7,6 @@ const particlesOptions = {
                 value_area: 500
             }
         }
-    },
-    color:'blue'
+    }
 }
 export default particlesOptions;

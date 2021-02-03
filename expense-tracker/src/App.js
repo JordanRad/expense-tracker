@@ -31,7 +31,7 @@ let theme = createMuiTheme({
   },
   typography: {
     "fontFamily": `"Segoe UI", "Helvetica", "Arial", sans-serif`,
-    "fontSize": 14,
+    "fontSize": 20,
     "fontWeightLight": 300,
     "fontWeightRegular": 400,
     "fontWeightMedium": 500

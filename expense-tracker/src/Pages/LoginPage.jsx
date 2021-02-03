@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
         padding: 0,
         height: '100vh',
         width: '100%',
-
+        
     },
     image: {
         backgroundImage: 'url(https://images.unsplash.com/photo-1611433675953-53eaeb60907d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max)',
