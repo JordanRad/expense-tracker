@@ -5,16 +5,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         marginBottom: "40px",
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
     },
     title: {
         flexGrow: 1,
@@ -28,16 +23,16 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar(props) {
     const classes = useStyles();
 
-    const name = JSON.parse(sessionStorage.getItem("user")) ? JSON.parse(sessionStorage.getItem("user").firstName) : "uu"
+    const firstName = JSON.parse(sessionStorage.getItem("user")) ? JSON.parse(sessionStorage.getItem("user").firstName) : "uu"
     return (
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar >
                     <Typography variant="h6" className={classes.title}>
-                        Hello, {name}
+                        Hi, {firstName}
                     </Typography>
-                    <div style={{marginRight:"4%"}}>
-                        List my expenses by: &nbsp;
+                    <div style={{marginRight:"30px"}}>
+                        {/* by:&nbsp;&nbsp; */}
                         <ButtonGroup disableElevation variant="contained" color="primary">
                             <Button 
                             className={props.criteria==="Month"?classes.active:null}

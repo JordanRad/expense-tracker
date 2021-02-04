@@ -30,11 +30,6 @@ const useStyles = makeStyles(theme => ({
         zIndex: 1
 
     },
-    animation: {
-        height: '30%',
-        zIndex: 100,
-        margin: 'auto'
-    },
     item: {
         marginTop: "30px",
         paddingLeft: "5%",
@@ -43,15 +38,24 @@ const useStyles = makeStyles(theme => ({
             paddingLeft: "20%",
             paddingRight: "20%",
         },
-        [theme.breakpoints.up('md')]: {
-            borderTop: `1px solid ${theme.palette.primary.dark}`,
-            borderBottom: `1px solid ${theme.palette.primary.dark}`,
+        [theme.breakpoints.only('md')]: {
+            paddingLeft: "2%",
+            paddingRight: "2%",
         },
     },
     heading: {
-        marginBottom: "2%",
-        paddingLeft: "14%",
-        paddingRight: "14%"
+        [theme.breakpoints.down('sm')]: {
+            paddingLeft: "2%",
+            paddingRight: "2%",
+        },
+        [theme.breakpoints.only('md')]: {
+            paddingLeft: "8%",
+            paddingRight: "8%",
+        },
+        [theme.breakpoints.up('lg')]: {
+            paddingLeft: "16%",
+            paddingRight: "16%",
+        },
     },
     btn: {
         color: theme.palette.primary.light,
@@ -67,13 +71,16 @@ const useStyles = makeStyles(theme => ({
             width: "400px",
             height: "80px"
         },
-        marginBottom: "1px",
+        marginBottom: "11px",
         marginTop: "26px"
+    },
+    paragraph: {
+        fontSize: "23px", letterSpacing: "1px",
     },
     icon: {
         fontSize: '80px',
         [theme.breakpoints.up('md')]: {
-            fontSize: '115px'
+            fontSize: '100px'
         },
     },
     loginLink: {
@@ -82,7 +89,6 @@ const useStyles = makeStyles(theme => ({
         },
         fontSize: '20px',
         color: theme.palette.primary.light,
-        marginTop: "1px",
         marginBottom: "100px"
     }
 }));
@@ -91,20 +97,20 @@ const LandingPage = (props) => {
     const classes = useStyles();
     const GridItems = [<Grid item className={classes.item} xs={12} md={4}>
         <ListIcon className={classes.icon} />
-        <div style={{ fontSize: "23px", letterSpacing: "1px" }}>
+        <div className={classes.paragraph}>
             Keep track of every expense that you make by entering it to your personal account.
         </div>
 
     </Grid>,
     <Grid className={classes.item} item xs={12} md={4}>
         <AttachMoneyIcon className={classes.icon} />
-        <div style={{ fontSize: "23px", letterSpacing: "1px" }}>
+        <div className={classes.paragraph}>
             List every expense and sort it by month for better understanding on how you spend your money.
           </div>
     </Grid>,
     <Grid className={classes.item} item xs={12} md={4}>
         <PieChartIcon className={classes.icon} />
-        <div style={{ fontSize: "23px", letterSpacing: "1px" }}>
+        <div className={classes.paragraph}>
             View graphical representations of your expenses.
         </div>
     </Grid>]
@@ -118,7 +124,7 @@ const LandingPage = (props) => {
                 <Grid item className={classes.heading} xs={12}>
                     <Typography variant="h2">My Expense</Typography>
                     <br />
-                    <Typography variant="body2">Lorem ipsum dolor sit amet,Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. sunt in culpa qui officia deserunt mollit anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <Typography style={{ color: "#63627B" }} variant="body2">Lorem ipsum dolor sit amet,Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. sunt in culpa qui officia deserunt mollit anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </Typography>
                 </Grid>
                 {GridItems.map(i => i)}
