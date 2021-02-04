@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import Typography from '@material-ui/core/Typography';
+import CommunicationService from '../services/CommunicationService';
 const useStyles = makeStyles(theme => ({
     root: {
         backgroundColor: theme.palette.secondary.dark ,
@@ -67,6 +68,9 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.secondary.dark ,
     }
 }));
+const registerUser = (user)=>{
+    return CommunicationService.register(user)
+}
 const RegisterPage = (props) => {
     const classes = useStyles();
     const [email,setEmail] = useState("")
@@ -80,6 +84,8 @@ const RegisterPage = (props) => {
         e.preventDefault();
         //check conditions
         console.log(email,firstName,lastName,password,cpassword)
+        registerUser({email:email,firstName:firstName,lastName:lastName,password:password})
+        .then(r=>console.log(r))
     }
     return (
 

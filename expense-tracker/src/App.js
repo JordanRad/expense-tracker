@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
 
 import HomePage from './Pages/HomePage';
@@ -11,12 +12,13 @@ import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
 import './index.css';
 import { responsiveFontSizes } from '@material-ui/core/styles';
+import history from './services/history';
 import {
   createMuiTheme,
   ThemeProvider,
   CssBaseline,
 } from "@material-ui/core";
-
+import PrivateRoute from './Components/PrivateRoute'
 let theme = createMuiTheme({
   palette: {
     primary: {
@@ -42,17 +44,17 @@ theme = responsiveFontSizes(theme);
 
 function App() {
  
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  console.log(user)
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-    <Router>
+    <Router history={history}>
         <Switch>
           <Route exact path="/">
             <LandingPage />
           </Route>
-          <Route path="/home">
-            <HomePage />
-          </Route>
+          <PrivateRoute path={'/home'} exact={true} component={HomePage} />
           <Route path="/login">
             <LoginPage />
           </Route>
@@ -60,7 +62,7 @@ function App() {
             <RegisterPage />
           </Route>
           <Route path="/">
-            <LandingPage />
+            <LandingPage/>
           </Route>
         </Switch>
     </Router>

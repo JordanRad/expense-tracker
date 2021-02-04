@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
-
+import CommunicationService from '../services/CommunicationService';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -20,10 +20,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+const logout = ()=> CommunicationService.logout();
 export default function Navbar(props) {
     const classes = useStyles();
 
-    const firstName = JSON.parse(sessionStorage.getItem("user")) ? JSON.parse(sessionStorage.getItem("user").firstName) : "uu"
+    const firstName = JSON.parse(sessionStorage.getItem("user")).firstName
+    
     return (
         <div className={classes.root}>
             <AppBar position="static">

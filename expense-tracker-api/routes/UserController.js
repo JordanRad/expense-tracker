@@ -65,13 +65,14 @@ router.post("/login", async (req, res) => {
             if (result === true) {
                 let response = {
                     id: user.id,
-                    email: user.email
+                    email: user.email,
+                    firstName:user.firstName
                 }
                 response.token = generateToken(user.email);
 
                 res.json(response)
             } else {
-                res.sendStatus(404).json("Wrong Credentials")
+                res.sendStatus(404)
             }
         })
     } catch (err) {
