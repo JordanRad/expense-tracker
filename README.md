@@ -1,7 +1,26 @@
 # Expense Tracker Full-Stack Web Application
-by Jordan Radushev
+🟡 *This project is still not fully completed since only the server side is ready*
 
-#### How to set up the project globally:
+### Case:
+Building a full-stack expense tracker was one of my first group projects in the university. Then I wanted to make "translate" it from its pure PHP (backend) and standard HTML, CSS & JS (frontend) to modern NodeJs & React JS project.
+
+### API Endpoints & Models
+
+
+### About the stack:
+As a full-stack app, my expense-tracker needs front-end and back-end part. I use the following technologies:
+* Front-end application:
+   * React.js
+   * Materlial UI
+* Back-end server part:
+   * Node.js
+   * Express.js
+* Database:
+   * SQLite3 file database
+* Other:
+   * Swagger UI
+
+### How to set up the project globally:
 
 1. Open the folder with the project with both front-end and api folders:
 ```
@@ -30,18 +49,6 @@ npm start
 npm start
 ```
 
-#### After succesffully running the API
+### After succesffully running the API
 check the API endpoints with examples by Swagger-UI on *localhost:8000/api-docs*
 
-#### About the stack:
-As a full-stack app, my expense-tracker needs front-end and back-end part. I use the following technologies:
-* Front-end application:
-   * React.js
-   * Materlial UI
-* Back-end server part:
-   * Node.js
-   * Express.js
-* Database:
-   * SQLite3 file database
-* Other:
-   * Swagger UI
