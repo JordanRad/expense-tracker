@@ -44,5 +44,4 @@ As a full-stack app, my expense-tracker needs front-end and back-end part. I use
 * Database:
    * SQLite3 file database
 * Other:
-   * npm
    * Swagger UI
