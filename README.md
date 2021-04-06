@@ -1,5 +1,5 @@
 # Expense Tracker Full-Stack Web Application
-🟡 *This project is still not fully completed since only the server side is ready*
+🟡 *This project is still not fully completed since only the server side is ready.*
 
 ## Case
 Building a full-stack expense tracker was one of my first group projects in the university. Then I wanted to make "translate" it from its pure PHP (backend) and standard HTML, CSS & JS (frontend) to modern NodeJs & React JS project.
